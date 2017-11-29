@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Elm!</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="stats"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let appNode = document.getElementById("app");
+    require('elm/Main.elm').Main.embed(appNode);
+
+    var stats = new Stats();
+    stats.showPanel(0);
+    document.getElementById('stats').appendChild(stats.domElement);
+    stats.begin();
+    function animate() {
+      stats.update();
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  </script>
+</body>
+
+</html>
